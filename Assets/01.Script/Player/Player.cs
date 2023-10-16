@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rid2D;
     private Collider2D _col2D;
 
+    [SerializeField] private UnityEvent OnAttck;
+
     #region 이동 관련
     [SerializeField] private UnityEvent<Vector2> OnMove;
 
@@ -56,7 +58,12 @@ public class Player : MonoBehaviour
         OnMove?.Invoke(_characterMoveAmount);
 
         _rid2D.velocity = _characterMoveAmount * _playerMovementSO.speed;
+    }
 
+    void Attack()
+    {
+
+        OnAttck?.Invoke();
     }
    
 }
